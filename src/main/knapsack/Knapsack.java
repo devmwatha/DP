@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class Knapsack {
     public static void main(String[] args) {
         Knapsack knapsack = new Knapsack();
-        System.out.println(knapsack.knapsackBUImproved(new int[]{1, 6, 10, 16}, new int[]{1, 2, 3, 5}, 6));
-        System.out.println(knapsack.solveKnapsack(new int[]{1, 6, 10, 16}, new int[]{1, 2, 3, 5}, 6));
+        System.out.println(knapsack.knapsackBUImproved(new int[]{1, 6, 10, 16}, new int[]{1, 2, 3, 5}, 7));
+        System.out.println(knapsack.solveKnapsack(new int[]{1, 6, 10, 16}, new int[]{1, 2, 3, 5}, 7));
     }
 
     public int solveKnapsack(int[] profits, int[] weights, int capacity) {
