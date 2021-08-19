@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class Knapsack {
     public static void main(String[] args) {
         Knapsack knapsack = new Knapsack();
+        System.out.println(knapsack.knapsackBUImproved(new int[]{1, 6, 10, 16}, new int[]{1, 2, 3, 5}, 6));
         System.out.println(knapsack.solveKnapsack(new int[]{1, 6, 10, 16}, new int[]{1, 2, 3, 5}, 6));
     }
 
@@ -75,5 +76,31 @@ public class Knapsack {
             }
         }
         return dp[n - 1][capacity];
+    }
+
+    public int knapsackBUImproved(int[] profits, int[] weights, int capacity) {
+        //base case
+        if (capacity <= 0 || profits.length == 0 || weights.length != profits.length)
+            return 0;
+
+        int n = profits.length;
+        int[] dp = new int[capacity + 1];
+
+        //one weight only
+        for (int c = 0; c <= capacity; c++)
+            if (weights[0] <= c)
+                dp[c] = profits[0];
+
+
+        for (int i = 1; i < n; i++) {
+            for (int c = capacity; c >= 0; c--) {
+                int profit = 0, profit1 = 0;
+                if (weights[i] <= c)
+                    profit = profits[i] + dp[c - weights[i]];
+                profit1 = dp[c];
+                dp[c] = Math.max(profit, profit1);
+            }
+        }
+        return dp[capacity];
     }
 }
